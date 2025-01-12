@@ -166,6 +166,79 @@ void copy(char dest[], char src[]){ // B = A , A'yı B'ye kopyala
     }else errorHere();   
 }
 
+//8
+int sum(char dest[]){
+    int sum = 0;
+    int destIndex = 0;
+    int* destTBase = ST[0].base;
+
+    for(int i = 0; i < 20; i++)
+    {
+        if(strcmp(ST[i].symbol,dest) == 0)
+        {
+            destTBase = ST[i].base;
+            destIndex = i;
+            break;
+        }
+    }
+
+    int dim1 = ST[destIndex].size1;
+    int dim2 = ST[destIndex].size2;
+    int totalDim = dim1 * dim2;
+
+    if(ST[destIndex].dim == 1){
+        sum = *ST[destIndex].base;
+    }else if(totalDim == 0){
+        for(int i = 0; i < dim1; i++){
+            sum += *ST[destIndex].base;
+            ST[destIndex].base++;
+        }
+    }else{
+        for(int i = 0; i < totalDim; i++){
+            sum += *ST[destIndex].base;
+            ST[destIndex].base++;
+        }
+    }
+
+    return sum;
+    //initialize(src, ST[destIndex].size1, ST[destIndex].size2, int dSum);
+    
+}
+
+void sumGetter(char src[], char dest[]){
+    int srcIndex = 0;
+    int destIndex = 0;
+    int* srcTBase = ST[0].base;
+    int* destTBase = ST[0].base;
+    int sfound = 0;
+    int dfound = 0;
+    int dSum = sum(dest);
+
+
+    for(int i = 0; i < 20; i++){
+        if(strcmp(ST[i].symbol,src) == 0){
+            srcTBase = ST[i].base;
+            srcIndex = i;
+            sfound++;
+        }
+        if(strcmp(ST[i].symbol,dest) == 0)
+        {
+            destTBase = ST[i].base;
+            destIndex = i;
+            dfound++;
+        }
+    }
+    
+    
+    if(sfound){
+        set(src, sum);
+    }else
+    {
+        int arr[1] = {sum};
+        initialize(src, ST[destIndex].size1, ST[destIndex].size2, arr);
+    }
+}
+
 // 10
 void diag(char* src, char* dest){
     struct SymbolTable* srcEntry = searchInSymbolTable(src);
