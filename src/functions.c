@@ -58,8 +58,10 @@ void set(char dest[], int value){
     int tempIndex;
     int* tempBase = ST[0].base;
 
-    for(int i = 0; i < 20; i++){
-        if(dest == ST[i].symbol){
+    for(int i = 0; i < 20; i++)
+    {
+        if(dest == ST[i].symbol)
+        {
             tempBase = ST[i].base;
             tempIndex = i;
             break;
@@ -81,7 +83,8 @@ void set(char dest[], int value){
             *tempBase = value;
             tempBase++;
         }
-    }else{
+    }else
+    {
         for(int i = 0; i < totalSize; i++)
         {
             *tempBase = value;
