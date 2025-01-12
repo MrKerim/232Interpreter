@@ -53,3 +53,24 @@ void initialize(char name[10], int dim1, int dim2, int value[]){ //dim1, dim2 = 
     stIndex++;
 
 }
+
+void set(char dest[], int value){
+    int tempIndex;
+    int* tempBase = ST[0].base;
+
+    for(int i = 0; i < 20; i++){
+        if(dest == ST[i].symbol){
+            tempBase = ST[i].base;
+            tempIndex = i;
+            break;
+        }
+    }
+
+    int dim1 = ST[tempIndex].size1;
+    int dim2 = ST[tempIndex].size1;
+    int totalSize = dim1*dim2;
+
+    for(int i = 0; i < totalSize; i++){
+        *tempBase = value;
+    }
+}
