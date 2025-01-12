@@ -29,7 +29,10 @@ int *base; // base address for the array
 
 void printParseTable();
 
+void printSymbolTable();
+
 void clearParseTable();
+
 
 extern struct ParseTable PT[1];
 extern struct SymbolTable ST[20];

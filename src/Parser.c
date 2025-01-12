@@ -252,11 +252,7 @@ void handleExpressionParsing(char* expression){
     }
 
     // set or copy , set uses integer 
-
-
-
-
-    
+    handleSetOrCopyFunctionParsing(leftHandSide,rightHandSide);
 
 
     return;

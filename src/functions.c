@@ -1,5 +1,13 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+#include <stdlib.h>
 
-void* initialize(char name[10], int dim1, int dim2, int value[]){ //dim1, dim2 = operand 1's 1st, 2nd element --- value[] = tempInitArray
+#include "Functions.h"
+#include "ParseTable.h"
+
+
+void initialize(char name[10], int dim1, int dim2, int value[]){ //dim1, dim2 = operand 1's 1st, 2nd element --- value[] = tempInitArray
     //
     //Filling the Symbol Table's one element(depends on index of stIndex) with parse table information
     int size = 0;
@@ -41,5 +49,7 @@ void* initialize(char name[10], int dim1, int dim2, int value[]){ //dim1, dim2 =
             temp_base++;
         }
     }
+
+    stIndex++;
 
 }

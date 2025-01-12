@@ -20,6 +20,16 @@ void printParseTable(){
 
 };
 
+void printSymbolTable(){
+    printf("#### SYMBOL TABLE ####\n");
+    for(int i = 0; i < stIndex; i++){
+        printf("Symbol: %s\n", ST[i].symbol);
+        printf("Dim: %d\n", ST[i].dim);
+        printf("Size1: %d\n", ST[i].size1);
+        printf("Size2: %d\n", ST[i].size2);
+        printf("Base[0] Int: %d\n", *ST[i].base);
+    }
+}
 
 void clearParseTable(){
     memset(&PT[0], 0, sizeof(struct ParseTable));
