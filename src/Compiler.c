@@ -96,4 +96,5 @@ void handleInitCompile(){
 void handleSetCompile(){
     char *destination = PT[0].destination;
     int val = PT[0].operand1.idx1;
+    set(destination, val);
 }
