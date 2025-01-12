@@ -3,8 +3,10 @@
 
 void handleCompile();
 
+void handleInitCompile();
+
 void handleSetCompile();
 
-void handleInitCompile();
+void handleCopyCompile();
 
 #endif

@@ -56,6 +56,7 @@ void handleCompile(){
         break;
     case 7:
         // copy
+        handleCopyCompile();
         break;
     case 8:
         // sum
@@ -97,4 +98,10 @@ void handleSetCompile(){
     char *destination = PT[0].destination;
     int val = PT[0].operand1.idx1;
     set(destination, val);
+}
+
+void handleCopyCompile(){
+    char *dest = PT[0].destination;
+    char *src = PT[0].source1;
+    //copy(dest, src);
 }

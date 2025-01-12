@@ -3,10 +3,11 @@
 #include <ctype.h>
 #include <stdlib.h>
 
+#include "Parser.h"
 #include "Functions.h"
 #include "ParseTable.h"
 
-
+// 5
 void initialize(char name[10], int dim1, int dim2, int value[]){ //dim1, dim2 = operand 1's 1st, 2nd element --- value[] = tempInitArray
     //
     //Filling the Symbol Table's one element(depends on index of stIndex) with parse table information
@@ -54,6 +55,7 @@ void initialize(char name[10], int dim1, int dim2, int value[]){ //dim1, dim2 = 
 
 }
 
+// 6
 void set(char dest[], int value){
     int tempIndex = 0;
     int* tempBase = ST[0].base;
@@ -92,4 +94,37 @@ void set(char dest[], int value){
         }
     }
     
+}
+
+// 11
+void exch(char* src1, int idx1, char* src2, int idx2){
+    struct SymbolTable* s1Entry = searchInSymbolTable(src1);
+    struct SymbolTable* s2Entry = searchInSymbolTable(src2);
+
+    if (s1Entry == NULL || s2Entry == NULL) {
+        printf("Error: One of the arrays %s or %s not found.\n", src1, src2);
+        return;
+    }
+
+    int temp = s1Entry->base[idx1];
+    s1Entry->base[idx1] = s2Entry->base[idx2];
+    s2Entry->base[idx2] = temp;
+}
+
+
+// 12
+void prt(char* name){
+    struct SymbolTable* entry = searchInSymbolTable(name);  
+
+    if (entry == NULL) {
+        printf("Error: Array %s not found.\n", name);
+        return;
+    }
+
+    for (int i = 0; i < entry->size1; i++) {
+        for (int j = 0; j < (entry->dim == 2 ? entry->size2 : 1); j++) {
+            printf("%d ", entry->base[i * entry->size2 + j]);
+        }
+        printf("\n");
+    }
 }
