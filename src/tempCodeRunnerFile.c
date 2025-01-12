@@ -1,0 +1,1 @@
+if(ST[tempIndex].dim == 0)
