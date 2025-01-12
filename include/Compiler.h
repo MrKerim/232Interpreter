@@ -9,4 +9,22 @@ void handleSetCompile();
 
 void handleCopyCompile();
 
+void handleSumCompile();
+
+void handlePrintCompile();
+
+void handleExchangeCompile();
+
+void handleDiagonalCompile();
+
+void handleAverageCompile();
+
+void handleAdditionCompile();
+
+void handleSubtractionCompile();
+
+void handleMultiplicationCompile();
+
+void handleDivisionCompile();
+
 #endif

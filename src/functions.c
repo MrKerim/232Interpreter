@@ -167,7 +167,7 @@ void copy(char dest[], char src[]){ // B = A , A'yı B'ye kopyala
 }
 
 //8
-int sum(char dest[]){
+int sumValue(char dest[]){
     int sum = 0;
     int destIndex = 0;
     int* destTBase = ST[0].base;
@@ -186,56 +186,44 @@ int sum(char dest[]){
     int dim2 = ST[destIndex].size2;
     int totalDim = dim1 * dim2;
 
-    if(ST[destIndex].dim == 1){
+    if(ST[destIndex].dim == 0){
         sum = *ST[destIndex].base;
     }else if(totalDim == 0){
         for(int i = 0; i < dim1; i++){
-            sum += *ST[destIndex].base;
-            ST[destIndex].base++;
+            sum += *destTBase;
+            destTBase++;
         }
     }else{
         for(int i = 0; i < totalDim; i++){
-            sum += *ST[destIndex].base;
-            ST[destIndex].base++;
+            sum += *destTBase;
+            destTBase++;
         }
     }
 
     return sum;
-    //initialize(src, ST[destIndex].size1, ST[destIndex].size2, int dSum);
     
 }
 
-void sumGetter(char src[], char dest[]){
-    int srcIndex = 0;
-    int destIndex = 0;
-    int* srcTBase = ST[0].base;
-    int* destTBase = ST[0].base;
+void sum(char src[], char dest[]){
+
     int sfound = 0;
-    int dfound = 0;
-    int dSum = sum(dest);
+    int dSum = sumValue(dest);
 
 
     for(int i = 0; i < 20; i++){
         if(strcmp(ST[i].symbol,src) == 0){
-            srcTBase = ST[i].base;
-            srcIndex = i;
             sfound++;
-        }
-        if(strcmp(ST[i].symbol,dest) == 0)
-        {
-            destTBase = ST[i].base;
-            destIndex = i;
-            dfound++;
+            break;
         }
     }
     
     
     if(sfound){
-        set(src, sum);
+        set(src, dSum);
     }else
     {
-        int arr[1] = {sum};
-        initialize(src, ST[destIndex].size1, ST[destIndex].size2, arr);
+        int arr[1] = {dSum};
+        initialize(src, 0, 0, arr);
     }
 }
 
@@ -287,6 +275,21 @@ void prt(char* name){
 
     if (entry == NULL) {
         printf("Error: Array %s not found.\n", name);
+        return;
+    }
+
+    //edit
+    if(entry->dim == 0) {
+        printf("%d\n", *entry->base);
+        return;
+    }
+
+    //edit 2
+    if(entry->dim == 1) {
+        for (int i = 0; i < entry->size1; i++) {
+            printf("%d ", entry->base[i]);
+        }
+        printf("\n");
         return;
     }
 

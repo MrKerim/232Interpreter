@@ -217,7 +217,7 @@ void diag(char* src, char* dest) {
         destEntry = searchInSymbolTable(dest);
     }
 
-    for (int i = 0; i < srcEntry->size1; i++) {
+    for (int i = 0; i < srcEntry->size1 ? srcEntry->size1 : 1; i++) {
         destEntry->base[i] = srcEntry->base[i * srcEntry->size1 + i];
     }
 }

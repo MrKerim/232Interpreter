@@ -28,21 +28,22 @@ void handleCompile(){
     {
     case 1:
         //additon
+        handleAdditionCompile();
         break;
     
     case 2:
         // subtraction
-
+        handleSubtractionCompile();
         break;
     
     case 3:
         // multiplication
-
+        handleMultiplicationCompile();
         break;
     
     case 4:
         // division
-
+        handleDivisionCompile();
         break; 
     
     case 5:
@@ -67,12 +68,15 @@ void handleCompile(){
         break;
     case 10:
         // diagonal
+        handleDiagonalCompile();
         break;
     case 11:
         // exchange
+        handleExchangeCompile();
         break;
     case 12:
         // print
+        handlePrintCompile();
         break;
     default:
         break;
@@ -110,5 +114,40 @@ void handleCopyCompile(){
 void handleSumCompile(){
     char *destination = PT[0].destination;
     char *source = PT[0].source1;
-    //sum(destination, source);
+    sum(destination, source);
+}
+
+
+void handleDiagonalCompile() {
+    diag(PT[0].source1, PT[0].destination);
+}
+
+void handleExchangeCompile() {
+    printf("Operan symbol : %s\n", PT[0].operand2.symbol);
+    exch(PT[0].operand1.symbol, PT[0].operand1.idx1, PT[0].operand2.symbol, PT[0].operand2.idx1);
+}
+
+void handlePrintCompile() {
+    prt(PT[0].destination);
+}
+
+void handleAverageCompile() {
+    double avg = average(PT[0].source1);
+    set(PT[0].destination, (int)avg); // Cast double to int for simplicity
+}
+
+void handleAdditionCompile() {
+    add(PT[0].destination, PT[0].source1, PT[0].source2);
+}
+
+void handleSubtractionCompile() {
+    sub(PT[0].destination, PT[0].source1, PT[0].source2);
+}
+
+void handleMultiplicationCompile() {
+    mul(PT[0].destination, PT[0].source1, PT[0].source2);
+}
+
+void handleDivisionCompile() {
+    div(PT[0].destination, PT[0].source1, PT[0].source2);
 }

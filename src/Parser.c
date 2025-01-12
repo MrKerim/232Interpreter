@@ -283,6 +283,7 @@ void handleExchangeFunctionParsing(char* expression){
 
         char* destination = trim(strtok(expression,"<>"));
         char* source = trim(strtok(NULL,"\0"));
+        source++;
 
         PT[0].operation = 11;
         PT[0].operand1 = tokenizeOperand(destination);

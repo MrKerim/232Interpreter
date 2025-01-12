@@ -10,6 +10,11 @@ void set(char dest[], int value);
 //7
 void copy(char dest[], char src[]);
 
+//8
+int sumValue(char dest[]);
+
+void sum(char src[], char dest[]);
+
 // 10
 void diag(char* src, char* dest);
 
