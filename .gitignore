@@ -1,2 +1,5 @@
 .vscode/
 *.pdf
+obj/
+program
+temp/

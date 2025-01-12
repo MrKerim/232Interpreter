@@ -111,14 +111,14 @@ void copy(char dest[], char src[]){ // B = A , A'yı B'ye kopyala
 
     for(int i = 0; i < 20; i++)
     {
-        if(dest == ST[i].symbol)
+        if(strcmp(dest, ST[i].symbol) == 0)
         {
             destTBase = ST[i].base;
             destIndex = i;
             found++;
         }
 
-        if(src == ST[i].symbol)
+        if(strcmp(src, ST[i].symbol) == 0)
         {
             srcTBase = ST[i].base;
             srcIndex = i;

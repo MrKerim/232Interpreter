@@ -251,27 +251,3 @@ void prt(char* name) {
         printf("\n");
     }
 }
-
-void prt(char* name){
-    struct SymbolTable* entry = searchInSymbolTable(name);  
-
-    if (entry == NULL) {
-        printf("Error: Array %s not found.\n", name);
-        return;
-    }
-
-    //edit
-    // dim = 0 ise sizelar 0 edge case için
-    if(entry->dim == 0){
-        printf("%d\n", *entry->base);
-        return;
-    }
-
-    for (int i = 0; i < entry->size1; i++) {
-        for (int j = 0; j < (entry->dim == 2 ? entry->size2 : 1); j++) {
-            printf("%d ", entry->base[i * entry->size2 + j]);
-        }
-        printf("\n");
-    }
-}
-

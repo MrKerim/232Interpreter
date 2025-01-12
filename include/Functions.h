@@ -7,6 +7,9 @@ void initialize(char name[10], int dim1, int dim2, int value[]);
 //6
 void set(char dest[], int value);
 
+//7
+void copy(char dest[], char src[]);
+
 // 10
 void diag(char* src, char* dest);
 

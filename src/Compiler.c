@@ -103,5 +103,5 @@ void handleSetCompile(){
 void handleCopyCompile(){
     char *dest = PT[0].destination;
     char *src = PT[0].source1;
-    //copy(dest, src);
+    copy(dest, src);
 }
