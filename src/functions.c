@@ -58,8 +58,10 @@ void set(char dest[], int value){
     int tempIndex;
     int* tempBase = ST[0].base;
 
-    for(int i = 0; i < 20; i++){
-        if(dest == ST[i].symbol){
+    for(int i = 0; i < 20; i++)
+    {
+        if(dest == ST[i].symbol)
+        {
             tempBase = ST[i].base;
             tempIndex = i;
             break;
@@ -70,7 +72,24 @@ void set(char dest[], int value){
     int dim2 = ST[tempIndex].size1;
     int totalSize = dim1*dim2;
 
-    for(int i = 0; i < totalSize; i++){
+    if(ST[tempIndex].dim == 0)
+    {
         *tempBase = value;
+
+    }else if(totalSize == 0)
+    {
+        for(int i = 0; i < dim1; i++)
+        {
+            *tempBase = value;
+            tempBase++;
+        }
+    }else
+    {
+        for(int i = 0; i < totalSize; i++)
+        {
+            *tempBase = value;
+            tempBase++;
+        }
     }
+    
 }
