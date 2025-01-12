@@ -60,6 +60,7 @@ void handleCompile(){
         break;
     case 8:
         // sum
+        handleSumCompile();
         break;
     case 9:
         // average
@@ -104,4 +105,10 @@ void handleCopyCompile(){
     char *dest = PT[0].destination;
     char *src = PT[0].source1;
     copy(dest, src);
+}
+
+void handleSumCompile(){
+    char *destination = PT[0].destination;
+    char *source = PT[0].source1;
+    //sum(destination, source);
 }
