@@ -96,6 +96,77 @@ void set(char dest[], int value){
     
 }
 
+//7
+void errorHere(){
+        perror("The array sizes are not compatible");
+}
+
+void copy(char dest[], char src[]){ // B = A , A'yı B'ye kopyala    
+    int destIndex = 0;
+    int srcIndex = 0;
+    int found = -1;
+
+    int* destTBase = ST[0].base;
+    int* srcTBase = ST[0].base;
+
+    for(int i = 0; i < 20; i++)
+    {
+        if(dest == ST[i].symbol)
+        {
+            destTBase = ST[i].base;
+            destIndex = i;
+            found++;
+        }
+
+        if(src == ST[i].symbol)
+        {
+            srcTBase = ST[i].base;
+            srcIndex = i;
+            found++;
+        }
+
+        if(found == 1) break;
+    }
+
+    if(ST[destIndex].dim == ST[srcIndex].dim)
+    {
+        //Total size of destination and source (A and B)
+        int dSize = ST[destIndex].size1 * ST[destIndex].size2;
+        
+
+        if(ST[destIndex].dim == 0)   //value
+        {         
+            *destTBase = *srcTBase;
+
+        }else if(dSize == 0)   //1D
+        {
+            if(ST[destIndex].size1 == ST[destIndex].size1)  //compatibility
+            {   
+                for(int i = 0; i < ST[srcIndex].size1; i++)
+                {
+                    *destTBase = *srcTBase;
+                    destTBase++;
+                    srcTBase++;
+                }
+
+            }else errorHere();  
+                     
+        }else  //2D
+        {         
+            if(( ST[destIndex].size1 == ST[destIndex].size1 ) && ( ST[destIndex].size2 == ST[destIndex].size2 ))
+            {
+                for(int i = 0; i < dSize; i++)
+                {
+                    *destTBase = *srcTBase;
+                    destTBase++;
+                    srcTBase++;
+                }
+            }else errorHere();
+        }
+    }else errorHere();   
+}
+
+
 // 11
 void exch(char* src1, int idx1, char* src2, int idx2){
     struct SymbolTable* s1Entry = searchInSymbolTable(src1);
